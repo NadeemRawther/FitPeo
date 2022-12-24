@@ -20,14 +20,15 @@ class FitPeoComposeTest {
 
     @Test
     fun myTest() {
-        ActivityScenario.launch(MainActivity::class.java).use {
-
-        }
+//        ActivityScenario.launch(MainActivity::class.java).use {
+//
+//        }
         composeTestRule.setContent {
             FitPeoTheme(){
                 FitPeoCard()
             }
         }
+        composeTestRule.onRoot().printToLog("TAG")
         composeTestRule.onNodeWithTag("1").assertExists()
         composeTestRule.onNodeWithTag("1").performScrollTo()
         composeTestRule.onNodeWithTag("5").assertIsDisplayed()

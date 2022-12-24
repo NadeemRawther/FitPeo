@@ -3,11 +3,14 @@ package com.nads.fitpeo
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.nads.fitpeo.ui.theme.FitPeoTheme
@@ -24,7 +27,10 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                    var text by remember{
+                        mutableStateOf("nadeem")
+                    }
+                    Greeting(text, { text = "changed" })
                 }
             }
         }
@@ -32,14 +38,20 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
+fun Greeting(name: String, function: () -> Unit) {
+    Column() {
+        Text(text = "Hello $name!")
+        Button(onClick = {function.invoke()}) {
+
+        }
+    }
+
 }
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
     FitPeoTheme {
-        Greeting("Android")
+        //Greeting("Android") { text = "changed" }
     }
 }
