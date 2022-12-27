@@ -1,6 +1,16 @@
 buildscript {
+    //added may cause erro
+    ext.kotlin_version = '1.6.10'
     ext {
-        compose_version = '1.1.1'
+        compose_version = '1.2.0-alpha08'
+    }
+    //added may cause erro
+    repositories { mavenCentral()
+
+        jcenter()
+        google()}
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-serialization:$kotlin_version"
     }
 }// Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
