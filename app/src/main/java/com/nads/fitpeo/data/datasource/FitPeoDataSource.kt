@@ -4,10 +4,10 @@ import com.nads.fitpeo.model.FitPeoResponseItem
 import retrofit2.http.GET
 import retrofit2.http.Path
 
-interface FitPeoDataSource {
+interface FitPeoDataSource:DataSource {
     @GET("photos")
-    suspend fun getList():List<FitPeoResponseItem>
+    override suspend fun getList():List<FitPeoResponseItem>
 
     @GET("photos/{id}")
-    suspend fun getListItem(@Path("id")id:String):FitPeoResponseItem
+    override suspend fun getListItem(@Path("id")id:String):FitPeoResponseItem
 }

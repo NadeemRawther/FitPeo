@@ -1,5 +1,6 @@
 package com.nads.fitpeo.data.repo
 
+import com.nads.fitpeo.data.datasource.DataSource
 import com.nads.fitpeo.data.datasource.FitPeoDataSource
 import com.nads.fitpeo.model.FitPeoResponseItem
 import kotlinx.coroutines.CoroutineDispatcher
@@ -9,7 +10,7 @@ import javax.inject.Singleton
 
 @Singleton
 class FitPeoDefaultRepo
-@Inject constructor( private  val fitPeoDataSource: FitPeoDataSource)
+@Inject constructor( private  val fitPeoDataSource: DataSource)
     :FitPeoRepository {
     override suspend fun getFitPeoList(): Result<List<FitPeoResponseItem>> {
         return Result.success(fitPeoDataSource.getList())

@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -22,11 +23,16 @@ import com.nads.fitpeo.ui.fitpeoitem.FitPeoViewModel
 @Composable
 fun DetailScreen(fitPeoViewModel: FitPeoViewModel, navController: NavHostController) {
     val loading by fitPeoViewModel.loading.collectAsState()
-    if (loading) {ProgressBars(true)}
-    else{ ProgressBars(false)
-        Column(modifier = Modifier.fillMaxSize().semantics {
-            testTag = "MainScreen"
-        }) {
+    if (loading) {
+        ProgressBars(true)
+        }
+    else{
+        ProgressBars(false)
+        Column(modifier = Modifier
+            .fillMaxSize()
+            .semantics {
+                testTag = "MainScreen"
+            }) {
             val fitItem by fitPeoViewModel.fitPeoCardItem.collectAsState()
             AsyncImage(
                 model = fitItem.url,
@@ -46,6 +52,7 @@ fun DetailScreen(fitPeoViewModel: FitPeoViewModel, navController: NavHostControl
             )
 
         }
+
     }
 
 

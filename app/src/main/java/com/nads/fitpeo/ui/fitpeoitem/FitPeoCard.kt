@@ -46,7 +46,8 @@ fun FitPeoCard(
         )
         .clickable {
             fitPeoViewModel.getFitPeoItem(fitPeoItem.id.toString())
-            navController.navigate("detail_screen") }
+            navController.navigate("detail_screen")
+        }
         .background(Color(0xfffdedec))
         .padding(10.dp)
         .semantics {

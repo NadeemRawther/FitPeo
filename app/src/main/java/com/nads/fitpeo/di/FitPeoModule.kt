@@ -6,6 +6,7 @@ import com.google.gson.TypeAdapter
 import com.google.gson.stream.JsonReader
 import com.google.gson.stream.JsonToken
 import com.google.gson.stream.JsonWriter
+import com.nads.fitpeo.data.datasource.DataSource
 import com.nads.fitpeo.data.datasource.FitPeoDataSource
 import com.nads.fitpeo.data.repo.FitPeoDefaultRepo
 import com.nads.fitpeo.data.repo.FitPeoRepository
@@ -30,7 +31,7 @@ object FitPeoModule {
 
     @Singleton
     @Provides
-    fun provideRepository(fitPeoDataSource:FitPeoDataSource):FitPeoRepository{
+    fun provideRepository(fitPeoDataSource:DataSource):FitPeoRepository{
         return FitPeoDefaultRepo(fitPeoDataSource)
     }
 
@@ -56,7 +57,7 @@ object FitPeoModule {
     }
     @Singleton
     @Provides
-    fun providesRetrofitClient(): FitPeoDataSource {
+    fun providesRetrofitClient(): DataSource {
 //        val gson = GsonBuilder()
 //            .registerTypeAdapter(Int::class.javaPrimitiveType, IntTypeAdapter())
 //            .registerTypeAdapter(Int::class.java, IntTypeAdapter()).create()

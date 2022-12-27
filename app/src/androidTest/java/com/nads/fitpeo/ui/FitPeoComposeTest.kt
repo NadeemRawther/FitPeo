@@ -63,27 +63,27 @@ class FitPeoComposeTest {
 
         fitPeoViewModel = FitPeoViewModel(FitPeoFakeRepositories())
 
-        composeTestRule.setContent {
-            navController = TestNavHostController(LocalContext.current)
-            navController.navigatorProvider.addNavigator(ComposeNavigator())
-            FitPeoNavHost(navController = navController, fitPeoViewModel = fitPeoViewModel)
-        }
+//        composeTestRule.setContent {
+//            navController = TestNavHostController(LocalContext.current)
+//            navController.navigatorProvider.addNavigator(ComposeNavigator())
+//            FitPeoNavHost(navController = navController, fitPeoViewModel = fitPeoViewModel)
+//        }
     }
 
 
     @Test
     fun myTest() {
-//        composeTestRule.setContent {
-//            navController = TestNavHostController(LocalContext.current)
-//            FitPeoTheme(){
-//                FitPeoScreen(
-//                    navController = navController,
-//
-//                    fitPeoViewModel = fitPeoViewModel,
-//                    paddingValues = PaddingValues(10.dp)
-//                    )
-//            }
-//        }
+        composeTestRule.setContent {
+            navController = TestNavHostController(LocalContext.current)
+            FitPeoTheme(){
+                FitPeoScreen(
+                    navController = navController,
+
+                    fitPeoViewModel = fitPeoViewModel,
+                    paddingValues = PaddingValues(10.dp)
+                    )
+            }
+        }
         //   composeTestRule.onRoot(useUnmergedTree = true).printToLog("TAG")
         composeTestRule.onRoot().printToLog("TAG")
         composeTestRule.onNodeWithTag("1").assertExists()

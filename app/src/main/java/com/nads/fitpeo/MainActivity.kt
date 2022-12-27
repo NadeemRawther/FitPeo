@@ -129,6 +129,7 @@ fun FitPeoScreen(
     fitPeoViewModel: FitPeoViewModel,
     navController: NavHostController
 ) {
+
     val loading by fitPeoViewModel.loading.collectAsState()
     if (loading) ProgressBars(true) else ProgressBars(false)
     val fitList by fitPeoViewModel.cards.collectAsState()
